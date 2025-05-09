@@ -1,0 +1,118 @@
+class HotelsItems {
+  int id;
+  String name;
+  String price;
+  String rate;
+  String image;
+  String description;
+  String localisation;
+  String sold;
+  HotelsItems(
+    this.id,
+    this.name,
+    this.price,
+    this.rate,
+    this.image,
+    this.description,
+    this.localisation,
+    this.sold,
+  );
+}
+
+List<HotelsItems> hotelsList = [
+  HotelsItems(
+    1,
+    "Golden Hills",
+    "4799",
+    "⭐4.1",
+    "assets/images/hotel_1.png",
+    "Disc",
+    "algeria",
+    "20% OFF",
+  ),
+  HotelsItems(
+    2,
+    "Golden Hills",
+    "4799",
+    "⭐4.1",
+    "assets/images/hotel_1.png",
+    "Disc",
+    "algeria",
+    "20% OFF",
+  ),
+  HotelsItems(
+    3,
+    "Golden Hills",
+    "4799",
+    "⭐4.1",
+    "assets/images/hotel_1.png",
+    "Disc",
+    "algeria",
+    "20% OFF",
+  ),
+];
+
+List<HotelsItems> hotelsList2 = [
+  HotelsItems(
+    1,
+    "Chiraton",
+    "4799",
+    "⭐4.1",
+    "assets/images/hotel_2.png",
+    "Disc",
+    "algeria",
+    "20% OFF",
+  ),
+  HotelsItems(
+    2,
+    "Chiraton",
+    "4799",
+    "⭐4.1",
+    "assets/images/hotel_2.png",
+    "Disc",
+    "algeria",
+    "20% OFF",
+  ),
+  HotelsItems(
+    3,
+    "Chiraton",
+    "4799",
+    "⭐4.1",
+    "assets/images/hotel_2.png",
+    "Disc",
+    "algeria",
+    "20% OFF",
+  ),
+];
+List<HotelsItems> hotelsList3 = [
+  HotelsItems(
+    1,
+    "Bayazid",
+    "4799",
+    "⭐4.1",
+    "assets/images/hotel_3.png",
+    "Disc",
+    "algeria",
+    "20% OFF",
+  ),
+  HotelsItems(
+    2,
+    "Bayazid",
+    "4799",
+    "⭐4.1",
+    "assets/images/hotel_3.png",
+    "Disc",
+    "algeria",
+    "20% OFF",
+  ),
+  HotelsItems(
+    3,
+    "Bayazid",
+    "4799",
+    "⭐4.1",
+    "assets/images/hotel_3.png",
+    "Disc",
+    "algeria",
+    "20% OFF",
+  ),
+];
