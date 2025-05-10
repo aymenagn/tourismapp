@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_app/data/hotels.dart';
+import 'package:my_app/widgets/booking_form.dart';
 
 class HoteldetailScreen extends StatefulWidget {
   HotelsItems item;
@@ -181,64 +182,55 @@ class _HoteldetailScreenState extends State<HoteldetailScreen>
     );*/
     return Scaffold(
       backgroundColor: Color(0xFFE3DFF5),
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(69),
-        child: AppBar(
-          backgroundColor: const Color(0xFFE3DFF5), // Light purple background
-          automaticallyImplyLeading: false, // Remove default back button
-          title: const Text(
-            'Hotel Details',
-            style: TextStyle(
-              color: Colors.black,
-              fontSize: 25,
-              fontWeight: FontWeight.bold,
-            ),
+      appBar: AppBar(
+        surfaceTintColor: Colors.transparent,
+        elevation: 0,
+        backgroundColor: Color(0xFFE3DFF5),
+        title: const Text(
+          "Product Detail",
+          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+        ),
+        leading: IconButton(
+          icon: const Padding(
+            padding: EdgeInsets.all(5),
+            child: Icon(Icons.arrow_back_ios, color: Colors.black),
           ),
-          centerTitle: true,
-          leading: IconButton(
-            icon: const Icon(
-              Icons.arrow_back_ios,
-              size: 25,
-              color: Colors.black,
-            ),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.share, color: Colors.black),
             onPressed: () {
-              // Handle back action
-              Navigator.pop(context);
+              // Handle share action
             },
           ),
-          actions: [
-            IconButton(
-              icon: const Icon(Icons.share, color: Colors.black),
-              onPressed: () {
-                // Handle share action
-              },
-            ),
-            AnimatedBuilder(
-              animation: _animationController,
-              builder: (BuildContext context, _) {
-                return IconButton(
-                  icon: Icon(
-                    Icons.favorite,
-                    color: _coloranimation.value,
-                    size: _sizeAnimation.value,
-                  ),
-                  onPressed: () {
-                    isfav
-                        ? _animationController.reverse()
-                        : _animationController.forward();
-                  },
-                );
-              },
-            ),
-          ],
-        ),
+          AnimatedBuilder(
+            animation: _animationController,
+            builder: (BuildContext context, _) {
+              return IconButton(
+                icon: Icon(
+                  Icons.favorite,
+                  color: _coloranimation.value,
+                  size: _sizeAnimation.value,
+                ),
+                onPressed: () {
+                  isfav
+                      ? _animationController.reverse()
+                      : _animationController.forward();
+                },
+              );
+            },
+          ),
+        ],
       ),
       body: SingleChildScrollView(
-        
         child: Column(
           children: [
             Image.asset(
               widget.item.image,
+
               fit: BoxFit.cover,
               height: 290,
               width: double.infinity,
@@ -259,7 +251,7 @@ class _HoteldetailScreenState extends State<HoteldetailScreen>
                         ),
                       ),
                       const SizedBox(
-                        height: 20,
+                        height: 50,
                       ), // Add some space between the title and the button
                       InkWell(
                         onTap: () {
@@ -283,16 +275,20 @@ class _HoteldetailScreenState extends State<HoteldetailScreen>
                                 ),
                           );
                         },
-
                         child: Container(
                           alignment: Alignment.center,
-                          height: 50,
-                          width: 50,
+                          height: 40,
+                          width: 40,
                           decoration: const BoxDecoration(
                             color: Color(0xff402662),
                             shape: BoxShape.circle,
                           ),
-                          child: const Icon(Icons.tune, color: Colors.white70),
+                          child: Image.asset(
+                            "assets/images/icon_flech.png",
+                            height: 40,
+                            width: 40,
+                            color: Color(0xffffffff),
+                          ),
                         ),
                       ),
                     ],
@@ -311,14 +307,32 @@ class _HoteldetailScreenState extends State<HoteldetailScreen>
                         widget.item.sold,
                         background: Color(0xFF5D4CFF),
                       ),
-                      SizedBox(width: 8),
+                      SizedBox(width: 15),
                       _buildBadge(
                         widget.item.rate,
                         background: Color(0xFF403571),
                       ),
                     ],
                   ),
-                  Text(widget.item.localisation),
+                  SizedBox(height: 10),
+                  Row(
+                    children: [
+                      Icon(
+                        Icons.location_on,
+                        size: 15,
+                        color: Color(0xaa000000),
+                      ),
+                      SizedBox(width: 5),
+                      Text(
+                        //"Bali, Indonesia",
+                        widget.item.localisation,
+                        style: TextStyle(
+                          color: Color(0xaa000000),
+                          fontSize: 15,
+                        ),
+                      ),
+                    ],
+                  ),
                   const SizedBox(height: 16),
                   Text(
                     "Description",
@@ -334,88 +348,300 @@ class _HoteldetailScreenState extends State<HoteldetailScreen>
           ],
         ),
       ),
-      bottomNavigationBar: BottomAppBar(
-        color: Color(0xff40354C),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                RichText(
-                  text: TextSpan(
-                    children: [
-                      TextSpan(
-                        text: '\$350 ',
-                        style: const TextStyle(
-                          color: Color(0xFF00AEEF), // Light blue
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
+      bottomNavigationBar: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            end: Alignment.topCenter,
+            begin: Alignment.bottomCenter,
+            colors: [Color.fromARGB(212, 64, 53, 76), Color(0xff40354C)],
+          ),
+        ),
+        child: BottomAppBar(
+          color: Color.fromARGB(0, 64, 53, 76),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  RichText(
+                    text: TextSpan(
+                      children: [
+                        TextSpan(
+                          text: '\$350 ',
+                          style: const TextStyle(
+                            color: Color(0xFF00AEEF), // Light blue
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
-                      ),
-                      const TextSpan(
-                        text: 'USD /',
-                        style: TextStyle(
-                          color: Color(0xFF00AEEF),
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500,
+                        const TextSpan(
+                          text: 'USD /',
+                          style: TextStyle(
+                            color: Color(0xFF00AEEF),
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500,
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 4),
+                  const Text(
+                    'night',
+                    style: TextStyle(color: Colors.white70, fontSize: 14),
+                  ),
+                ],
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  _showBookingModal(context);
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Color(
+                    0xFF4B297A,
+                  ), // Button color (deep purple)
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 24,
+                    vertical: 12,
+                  ),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
                   ),
                 ),
-                const SizedBox(height: 4),
-                const Text(
-                  'night',
-                  style: TextStyle(color: Colors.white70, fontSize: 14),
-                ),
-              ],
-            ),
-            ElevatedButton(
-              onPressed: () {
-                // Handle booking logic
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Color(
-                  0xFF4B297A,
-                ), // Button color (deep purple)
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 24,
-                  vertical: 12,
-                ),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
+                child: const Text(
+                  'BOOK NOW',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    letterSpacing: 1,
+                  ),
                 ),
               ),
-              child: const Text(
-                'BOOK NOW',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  letterSpacing: 1,
-                ),
-              ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
+    );
+  }
+
+  void _showBookingModal(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: false, // Make it full-screen if needed
+      backgroundColor: Color(0xff000000),
+      shape: const RoundedRectangleBorder(
+        // Add rounded corners to the sheet
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20.0)),
+      ),
+      builder: (context) {
+        // Use Padding to adjust content when the keyboard appears
+        return Padding(
+          padding: EdgeInsets.only(
+            bottom: MediaQuery.of(context).viewInsets.bottom,
+          ),
+          child: Container(
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [Color(0xffE3DFF5), Color(0xff40354C)],
+              ),
+              borderRadius: BorderRadius.vertical(top: Radius.circular(20.0)),
+            ),
+            child: const BookingForm(),
+          ), // Use the extracted widget here
+        );
+      },
     );
   }
 }
 
 Widget _buildBadge(String text, {required Color background}) {
   return Container(
-    height: 22,
-    width: 52,
+    height: 30,
+    width: 65,
     alignment: Alignment(0, 0),
     decoration: BoxDecoration(
       color: background,
-      borderRadius: BorderRadius.circular(12),
+      borderRadius: BorderRadius.circular(20),
     ),
     child: Text(
       text,
       textAlign: TextAlign.center,
-      style: TextStyle(color: Colors.white, fontSize: 8),
+      style: TextStyle(color: Colors.white, fontSize: 10),
     ),
   );
 }
+
+/*void _showBookingModal(BuildContext context) {
+  showModalBottomSheet(
+    context: context,
+    builder: (BuildContext context) {
+      return Container(
+        padding: EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisSize:
+              MainAxisSize.min, // Important for the modal to fit content
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            // Date Selection
+            Container(
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.grey.shade400),
+                borderRadius: BorderRadius.circular(8.0),
+              ),
+              padding: EdgeInsets.all(12.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Text(
+                        'From',
+                        style: TextStyle(fontSize: 12.0, color: Colors.grey),
+                      ),
+                      Row(
+                        children: <Widget>[
+                          Text(
+                            '24',
+                            style: TextStyle(
+                              fontSize: 24.0,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          SizedBox(width: 4.0),
+                          Text('Mon', style: TextStyle(fontSize: 14.0)),
+                          SizedBox(width: 2.0),
+                          Text('Oct', style: TextStyle(fontSize: 14.0)),
+                        ],
+                      ),
+                    ],
+                  ),
+                  Icon(Icons.arrow_forward_rounded, color: Colors.grey),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Text(
+                        'To',
+                        style: TextStyle(fontSize: 12.0, color: Colors.grey),
+                      ),
+                      Row(
+                        children: <Widget>[
+                          Text(
+                            '26',
+                            style: TextStyle(
+                              fontSize: 24.0,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          SizedBox(width: 4.0),
+                          Text('Wed', style: TextStyle(fontSize: 14.0)),
+                          SizedBox(width: 2.0),
+                          Text('Oct', style: TextStyle(fontSize: 14.0)),
+                        ],
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(height: 16.0),
+
+            // Adults
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Text('2 Adults (+18yrs)', style: TextStyle(fontSize: 16.0)),
+                Row(
+                  children: <Widget>[
+                    IconButton(
+                      icon: Icon(Icons.remove),
+                      onPressed: () {
+                        /* Handle decrement */
+                      },
+                    ),
+                    Text('2', style: TextStyle(fontSize: 16.0)),
+                    IconButton(
+                      icon: Icon(Icons.add),
+                      onPressed: () {
+                        /* Handle increment */
+                      },
+                    ),
+                  ],
+                ),
+              ],
+            ),
+            SizedBox(height: 8.0),
+
+            // Children
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Text('1 Children (-18yrs)', style: TextStyle(fontSize: 16.0)),
+                Row(
+                  children: <Widget>[
+                    IconButton(
+                      icon: Icon(Icons.remove),
+                      onPressed: () {
+                        /* Handle decrement */
+                      },
+                    ),
+                    Text('1', style: TextStyle(fontSize: 16.0)),
+                    IconButton(
+                      icon: Icon(Icons.add),
+                      onPressed: () {
+                        /* Handle increment */
+                      },
+                    ),
+                  ],
+                ),
+              ],
+            ),
+            SizedBox(height: 8.0),
+
+            // Rooms
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Text('1 Rooms', style: TextStyle(fontSize: 16.0)),
+                Row(
+                  children: <Widget>[
+                    IconButton(
+                      icon: Icon(Icons.remove),
+                      onPressed: () {
+                        /* Handle decrement */
+                      },
+                    ),
+                    Text('1', style: TextStyle(fontSize: 16.0)),
+                    IconButton(
+                      icon: Icon(Icons.add),
+                      onPressed: () {
+                        /* Handle increment */
+                      },
+                    ),
+                  ],
+                ),
+              ],
+            ),
+            SizedBox(height: 24.0),
+
+            // Optional: A button to apply the selection
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.pop(context); // Close the bottom sheet
+                  // Handle the selected booking options
+                  print('Selected options: ...');
+                },
+                child: Text('Apply'),
+              ),
+            ),
+          ],
+        ),
+      );
+    },
+  );
+}*/
