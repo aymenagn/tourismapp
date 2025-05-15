@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_app/data/hotels.dart';
-import 'package:my_app/screens/hoteldetail_screen.dart';
+import 'package:my_app/screens/hotels/hoteldetail_screen.dart';
 
 class hotelsContent extends StatelessWidget {
   const hotelsContent({super.key});
@@ -35,6 +35,7 @@ class hotelsContent extends StatelessWidget {
                 onTap: () {
                   showModalBottomSheet(
                     context: context,
+
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.vertical(
                         top: Radius.circular(20),

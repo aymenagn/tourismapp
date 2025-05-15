@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_app/widgets/contents/hotelsContent.dart';
+import 'package:my_app/widgets/contents/hotels/hotelsContent.dart';
 import 'package:my_app/widgets/mainwidget.dart';
 //import 'package:ui_5_travel_bag_app/product_detail.dart';
 

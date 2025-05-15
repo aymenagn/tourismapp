@@ -1,4 +1,4 @@
-class HotelsItems {
+class RestoItems {
   int id;
   String name;
   String price;
@@ -7,7 +7,7 @@ class HotelsItems {
   String description;
   String localisation;
   String sold;
-  HotelsItems(
+  RestoItems(
     this.id,
     this.name,
     this.price,
@@ -19,8 +19,8 @@ class HotelsItems {
   );
 }
 
-List<HotelsItems> hotelsList = [
-  HotelsItems(
+List<RestoItems> RestoList = [
+  RestoItems(
     1,
     "Golden Hills",
     "4799",
@@ -30,7 +30,7 @@ List<HotelsItems> hotelsList = [
     "Algeria,Setif,Setif",
     "20% OFF",
   ),
-  HotelsItems(
+  RestoItems(
     2,
     "Golden Hills",
     "4799",
@@ -40,7 +40,7 @@ List<HotelsItems> hotelsList = [
     "Algeria,Setif,Setif",
     "20% OFF",
   ),
-  HotelsItems(
+  RestoItems(
     3,
     "Golden Hills",
     "4799",
@@ -52,8 +52,8 @@ List<HotelsItems> hotelsList = [
   ),
 ];
 
-List<HotelsItems> hotelsList2 = [
-  HotelsItems(
+List<RestoItems> RestoList2 = [
+  RestoItems(
     1,
     "Chiraton",
     "4799",
@@ -63,7 +63,7 @@ List<HotelsItems> hotelsList2 = [
     "Algeria,Setif,Setif",
     "20% OFF",
   ),
-  HotelsItems(
+  RestoItems(
     2,
     "Chiraton",
     "4799",
@@ -73,7 +73,7 @@ List<HotelsItems> hotelsList2 = [
     "Algeria,Setif,Setif",
     "20% OFF",
   ),
-  HotelsItems(
+  RestoItems(
     3,
     "Chiraton",
     "4799",
@@ -84,8 +84,8 @@ List<HotelsItems> hotelsList2 = [
     "20% OFF",
   ),
 ];
-List<HotelsItems> hotelsList3 = [
-  HotelsItems(
+List<RestoItems> RestoList3 = [
+  RestoItems(
     1,
     "Bayazid",
     "4799",
@@ -95,7 +95,7 @@ List<HotelsItems> hotelsList3 = [
     "Algeria,Setif,Setif",
     "10% OFF",
   ),
-  HotelsItems(
+  RestoItems(
     2,
     "Bayazid",
     "4799",
@@ -105,7 +105,7 @@ List<HotelsItems> hotelsList3 = [
     "Algeria,Setif,Setif",
     "10% OFF",
   ),
-  HotelsItems(
+  RestoItems(
     3,
     "Bayazid",
     "4799",

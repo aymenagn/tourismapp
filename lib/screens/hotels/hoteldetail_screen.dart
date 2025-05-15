@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_app/data/hotels.dart';
-import 'package:my_app/widgets/booking_form.dart';
+import 'package:my_app/screens/hotels/confirmationbooking_screen.dart';
+import 'package:my_app/widgets/contents/hotels/booking_form.dart';
 
 class HoteldetailScreen extends StatefulWidget {
   HotelsItems item;
@@ -186,9 +187,12 @@ class _HoteldetailScreenState extends State<HoteldetailScreen>
         surfaceTintColor: Colors.transparent,
         elevation: 0,
         backgroundColor: Color(0xFFE3DFF5),
-        title: const Text(
-          "Product Detail",
-          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+        title: Text(
+          widget.item.name,
+          style: const TextStyle(
+            color: Colors.black,
+            fontWeight: FontWeight.bold,
+          ),
         ),
         leading: IconButton(
           icon: const Padding(
@@ -204,6 +208,21 @@ class _HoteldetailScreenState extends State<HoteldetailScreen>
             icon: const Icon(Icons.share, color: Colors.black),
             onPressed: () {
               // Handle share action
+              /*Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder:
+                      (context) => ConfirmationbookingScreen( // Use the new screen here
+                        bookingDate: bookingDate,
+                        checkInDate: checkInDate,
+                        checkOutDate: checkOutDate,
+                        adults: _adults,
+                        children: _children,
+                        rooms: _rooms,
+                        totalPrice: _totalPrice,
+                        ),          
+                ),
+              );*/
             },
           ),
           AnimatedBuilder(
@@ -353,7 +372,7 @@ class _HoteldetailScreenState extends State<HoteldetailScreen>
           gradient: LinearGradient(
             end: Alignment.topCenter,
             begin: Alignment.bottomCenter,
-            colors: [Color.fromARGB(212, 64, 53, 76), Color(0xff40354C)],
+            colors: [Color(0xff40354C), Color(0xff40354C)],
           ),
         ),
         child: BottomAppBar(
@@ -428,7 +447,7 @@ class _HoteldetailScreenState extends State<HoteldetailScreen>
   void _showBookingModal(BuildContext context) {
     showModalBottomSheet(
       context: context,
-      isScrollControlled: false, // Make it full-screen if needed
+      isScrollControlled: true, // Make it full-screen if needed
       backgroundColor: Color(0xff000000),
       shape: const RoundedRectangleBorder(
         // Add rounded corners to the sheet
@@ -447,7 +466,7 @@ class _HoteldetailScreenState extends State<HoteldetailScreen>
                 end: Alignment.bottomCenter,
                 colors: [Color(0xffE3DFF5), Color(0xff40354C)],
               ),
-              borderRadius: BorderRadius.vertical(top: Radius.circular(20.0)),
+              borderRadius: BorderRadius.vertical(top: Radius.circular(40)),
             ),
             child: const BookingForm(),
           ), // Use the extracted widget here
@@ -474,7 +493,7 @@ Widget _buildBadge(String text, {required Color background}) {
   );
 }
 
-/*void _showBookingModal(BuildContext context) {
+void _showBookingModal(BuildContext context) {
   showModalBottomSheet(
     context: context,
     builder: (BuildContext context) {
@@ -644,4 +663,4 @@ Widget _buildBadge(String text, {required Color background}) {
       );
     },
   );
-}*/
+}

@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
-import 'package:my_app/screens/hotels_screen.dart';
+import 'package:my_app/screens/hotels/hotels_screen.dart';
+import 'package:my_app/screens/restaurants/restaurants_screen.dart';
 
 // ignore: camel_case_types
 class homeContent extends StatelessWidget {
@@ -252,14 +253,14 @@ class homeContent extends StatelessWidget {
                           },
                         ),
                         Choices(
-                          title: 'Flight',
+                          title: 'Restaurants',
                           image: 'assets/images/bag_2.png',
                           colorcontain: 0xff40354C,
                           onTap: () {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => const HotelsScreen(),
+                                builder: (context) => const RestaurantsScreen(),
                               ),
                             );
                           },
