@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:my_app/data/hotels.dart';
-import 'package:my_app/screens/hotels/confirmationbooking_screen.dart';
 import 'package:my_app/widgets/contents/hotels/booking_form.dart';
 
 class HoteldetailScreen extends StatefulWidget {

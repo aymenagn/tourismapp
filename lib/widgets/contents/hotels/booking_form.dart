@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart'; // Import for iOS-style widgets
 import 'package:intl/intl.dart';
-import 'package:my_app/screens/hotels/confirmationbooking_screen.dart'; // Import the intl package
+// Import the intl package
 
 // Extract the BookingForm widget
 class BookingForm extends StatefulWidget {

@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_app/screens/hotels/hotels_screen.dart';
-import 'package:my_app/screens/restaurants/restaurants_screen.dart';
-import 'package:geolocator/geolocator.dart';
 import 'package:my_app/screens/restaurants/restaurants_screenn.dart';
-import 'package:my_app/screens/restaurants/restaurants_screennn.dart';
 
 // ignore: camel_case_types
 class homeContent extends StatelessWidget {

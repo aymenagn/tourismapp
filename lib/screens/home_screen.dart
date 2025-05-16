@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:my_app/widgets/contents/homeContent.dart';
 import 'package:my_app/widgets/mainwidget.dart';
 //import 'package:ui_5_travel_bag_app/product_detail.dart';

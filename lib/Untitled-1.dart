@@ -444,7 +444,7 @@ class _BookingScreenState extends State<BookingScreen> {
             title: const Text('Booking Confirmation'),
             content: Text(
               'Your booking is confirmed for:\n'
-              'Date Range: ${_dateRange}\n'
+              'Date Range: $_dateRange\n'
               'Adults: $_adults\n'
               'Children: $_children\n'
               'Rooms: $_rooms',

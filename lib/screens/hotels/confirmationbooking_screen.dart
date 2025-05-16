@@ -105,9 +105,9 @@ class ConfirmationbookingScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  _buildInfoRow('Booking Date', '$bookingDate'),
-                  _buildInfoRow('Check-in', '$checkInDate'),
-                  _buildInfoRow('Check-out', '$checkOutDate'),
+                  _buildInfoRow('Booking Date', bookingDate),
+                  _buildInfoRow('Check-in', checkInDate),
+                  _buildInfoRow('Check-out', checkOutDate),
                   _buildInfoRow('Adults', '$adults'),
                   _buildInfoRow('Children', '$children'),
                   _buildInfoRow('Room(s)', '$rooms'),
