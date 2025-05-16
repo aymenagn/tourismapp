@@ -1,12 +1,62 @@
-
 import 'package:flutter/material.dart';
 import 'package:my_app/screens/hotels/hotels_screen.dart';
 import 'package:my_app/screens/restaurants/restaurants_screen.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:my_app/screens/restaurants/restaurants_screenn.dart';
+import 'package:my_app/screens/restaurants/restaurants_screennn.dart';
 
 // ignore: camel_case_types
 class homeContent extends StatelessWidget {
   const homeContent({super.key});
 
+  //   Future<Position?> _getCurrentLocation(BuildContext context) async {
+  //   LocationPermission permission = await Geolocator.checkPermission();
+  //   if (permission == LocationPermission.denied) {
+  //     permission = await Geolocator.requestPermission();
+  //     if (permission == LocationPermission.denied) {
+  //       ScaffoldMessenger.of(context).showSnackBar(
+  //         const SnackBar(content: Text('Location permissions are denied')),
+  //       );
+  //       return null;
+  //     }
+  //   }
+
+  //   if (permission == LocationPermission.deniedForever) {
+  //     ScaffoldMessenger.of(context).showSnackBar(
+  //       const SnackBar(
+  //         content: Text(
+  //           'Location permissions are permanently denied, we cannot request permissions.',
+  //         ),
+  //       ),
+  //     );
+  //     return null;
+  //   }
+
+  //   // If permissions are granted, get the current position
+  //   try {
+  //     Position position = await Geolocator.getCurrentPosition();
+  //     return position;
+  //   } catch (e) {
+  //     // Handle potential errors during location retrieval
+  //     print("Error getting location: $e");
+  //     ScaffoldMessenger.of(context).showSnackBar(
+  //       const SnackBar(content: Text('Failed to get current location')),
+  //     );
+  //     return null;
+  //   }
+  // }
+
+  //   void _navigateToRestaurants(BuildContext context) async {
+  //   print("navigateToRestaurants called!"); // <--- This should print
+  //   Position? position = await _getCurrentLocation(context);
+  //   print("Current position: $position"); // <--- What does this print?
+  //   if (position != null) {
+  //     Navigator.push(
+  //       context,
+  //       MaterialPageRoute(builder: (context) => const RestaurantsScreen()),
+  //     );
+  //   }
+  // }
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -257,10 +307,12 @@ class homeContent extends StatelessWidget {
                           image: 'assets/images/bag_2.png',
                           colorcontain: 0xff40354C,
                           onTap: () {
+                            // _navigateToRestaurants(context);
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => const RestaurantsScreen(),
+                                builder:
+                                    (context) => const RestaurantsScreenn(),
                               ),
                             );
                           },
