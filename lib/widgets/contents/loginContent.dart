@@ -7,6 +7,8 @@ class loginContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var _tool_ = MediaQuery.of(context).size.height;
+    var _ord_ = MediaQuery.of(context).size.width;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
@@ -34,8 +36,8 @@ class loginContent extends StatelessWidget {
         ),
         const SizedBox(height: 74),
         SizedBox(
-          height: 47,
-          width: 297,
+          height: _tool_ * 0.0598726114649682,
+          width: _ord_ * 0.825,
           child: TextField(
             decoration: InputDecoration(
               labelText: 'E-mail',
@@ -71,8 +73,8 @@ class loginContent extends StatelessWidget {
 
         const SizedBox(height: 15),
         SizedBox(
-          height: 47,
-          width: 297,
+          height: _tool_ * 0.0598726114649682,
+          width: _ord_ * 0.825,
           child: TextField(
             obscureText: true,
             decoration: InputDecoration(
@@ -99,9 +101,9 @@ class loginContent extends StatelessWidget {
                 Icons.visibility_outlined,
                 color: Color.fromARGB(179, 158, 23, 23),
               ),
-              suffixIconConstraints: const BoxConstraints(
-                minWidth: 48,
-                minHeight: 48,
+              suffixIconConstraints: BoxConstraints(
+                minWidth: _ord_ * 0.1333333333333333,
+                minHeight: _tool_ * 0.0598726114649682,
               ),
             ),
             style: TextStyle(color: Color(0xFFffffff), fontSize: 14),

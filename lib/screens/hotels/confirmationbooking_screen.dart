@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
-import 'package:my_app/data/hotels.dart';
 
-class ConfirmationbookingScreen extends StatelessWidget {
+class ConfirmationbookingScreen extends StatefulWidget {
   final String bookingDate;
   final String checkInDate;
   final String checkOutDate;
@@ -21,10 +19,19 @@ class ConfirmationbookingScreen extends StatelessWidget {
     required this.rooms,
     required this.totalPrice,
   });
+  @override
+  _ConfirmationbookingScreenState createState() => _ConfirmationbookingScreenState();
+}
+
+class _ConfirmationbookingScreenState extends State<ConfirmationbookingScreen> {
   
 
   @override
   Widget build(BuildContext context) {
+    var _tool_ = MediaQuery.of(context).size.height;
+    var _ord_ = MediaQuery.of(context).size.width;
+    var tool = MediaQuery.of(context).size.height /785;
+    var ord = MediaQuery.of(context).size.width/360;
     return Scaffold(
       backgroundColor: Color(0xFFE3DFF5),
       appBar: AppBar(
@@ -56,8 +63,8 @@ class ConfirmationbookingScreen extends StatelessWidget {
             Row(
               children: <Widget>[
                 Container(
-                  width: 100,
-                  height: 80,
+                  width: _ord_ * 0.2777777777777778,
+                  height: _tool_ * 0.1019108280254777,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(8.0),
                     image: DecorationImage(
@@ -99,18 +106,18 @@ class ConfirmationbookingScreen extends StatelessWidget {
             const Divider(),
             const SizedBox(height: 16.0),
             Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 20,
+              padding:  EdgeInsets.symmetric(
+                horizontal: _ord_ * 0.0555555555555556,
               ), // You can adjust the value
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  _buildInfoRow('Booking Date', bookingDate),
-                  _buildInfoRow('Check-in', checkInDate),
-                  _buildInfoRow('Check-out', checkOutDate),
-                  _buildInfoRow('Adults', '$adults'),
-                  _buildInfoRow('Children', '$children'),
-                  _buildInfoRow('Room(s)', '$rooms'),
+                  _buildInfoRow('Booking Date', widget.bookingDate),
+                  _buildInfoRow('Check-in', widget.checkInDate),
+                  _buildInfoRow('Check-out', widget.checkOutDate),
+                  _buildInfoRow('Adults', '${widget.adults}'),
+                  _buildInfoRow('Children', '${widget.children}'),
+                  _buildInfoRow('Room(s)', '${widget.rooms}'),
                 ],
               ),
             ),
@@ -119,8 +126,8 @@ class ConfirmationbookingScreen extends StatelessWidget {
             const Divider(),
             const SizedBox(height: 16.0),
             Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 20,
+              padding:  EdgeInsets.symmetric(
+                horizontal: _ord_ * 0.0555555555555556,
               ), // You can adjust the value
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -141,7 +148,9 @@ class ConfirmationbookingScreen extends StatelessWidget {
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.deepPurple,
-                  padding: const EdgeInsets.symmetric(vertical: 16.0),
+                  padding:  EdgeInsets.symmetric(
+                    vertical: _tool_ * 0.0203821656050955,
+                  ),
                   textStyle: const TextStyle(fontSize: 16.0),
                 ),
                 child: const Text(
@@ -157,8 +166,14 @@ class ConfirmationbookingScreen extends StatelessWidget {
   }
 
   Widget _buildInfoRow(String label, String value) {
+    var _tool_ = MediaQuery.of(context).size.height;
+    var _ord_ = MediaQuery.of(context).size.width;
+    var tool = MediaQuery.of(context).size.height /785;
+    var ord = MediaQuery.of(context).size.width/360;
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      padding:  EdgeInsets.symmetric(
+        vertical: _tool_ * 0.0103821656050955,
+      ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
@@ -178,11 +193,16 @@ class ConfirmationbookingScreen extends StatelessWidget {
       ),
     );
   }
-  
 
   Widget _buildTotalRow(String label, String value) {
+    var _tool_ = MediaQuery.of(context).size.height;
+    var _ord_ = MediaQuery.of(context).size.width;
+    var tool = MediaQuery.of(context).size.height /785;
+    var ord = MediaQuery.of(context).size.width/360;
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      padding:  EdgeInsets.symmetric(
+        vertical: _tool_ * 0.0103821656050955,
+      ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[

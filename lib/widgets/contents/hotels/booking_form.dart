@@ -5,7 +5,7 @@ import 'package:intl/intl.dart';
 
 // Extract the BookingForm widget
 class BookingForm extends StatefulWidget {
-  const BookingForm({super.key,});
+  const BookingForm({super.key});
 
   @override
   _BookingFormState createState() => _BookingFormState();
@@ -266,8 +266,12 @@ class _BookingFormState extends State<BookingForm> {
 
   @override
   Widget build(BuildContext context) {
+    var _tool_ = MediaQuery.of(context).size.height;
+    var _ord_ = MediaQuery.of(context).size.width;
+    var tool = MediaQuery.of(context).size.height /785;
+    var ord = MediaQuery.of(context).size.width/360;
     return SizedBox(
-      height: 471,
+      height: _tool_ * 0.6,
       width: double.infinity,
       child: Padding(
         padding: const EdgeInsets.all(20.0),
@@ -278,8 +282,11 @@ class _BookingFormState extends State<BookingForm> {
             SizedBox(height: 30),
             Container(
               height: 91,
-              width: 257,
-              padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+              width: _ord_ * 0.7138888888888889,
+              padding:  EdgeInsets.symmetric(
+                vertical: _tool_ * 0.0152866242038217,
+                horizontal: _ord_ * 0.0444444444444444,
+              ),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
                 color: Colors.transparent,
@@ -442,9 +449,9 @@ class _BookingFormState extends State<BookingForm> {
                 //jdid
                 Container(
                   //jdid
-                  padding: const EdgeInsets.symmetric(
+                  padding:  EdgeInsets.symmetric(
                     vertical: 5,
-                    horizontal: 16,
+                    horizontal: _ord_ * 0.0444444444444444,
                   ), //jdid
                   decoration: BoxDecoration(
                     //jdid
@@ -478,6 +485,7 @@ class _BookingFormState extends State<BookingForm> {
                 // Book Now Button
                 ElevatedButton(
                   onPressed: () {
+                    Navigator.of(context).pop();
                     _performBooking(context);
                   },
                   style: ElevatedButton.styleFrom(
@@ -530,7 +538,7 @@ class _BookingFormState extends State<BookingForm> {
                           context: context,
                           initialDate: _fromDate ?? DateTime.now(),
                           firstDate: DateTime.now(),
-                          lastDate: DateTime(DateTime.now().year + 1),
+                          lastDate: _toDate ?? DateTime.now(),
                         );
                         if (picked != null) {
                           setState(() {
@@ -601,7 +609,8 @@ class _BookingFormState extends State<BookingForm> {
                         final DateTime? picked = await showDatePicker(
                           context: context,
                           initialDate: _toDate ?? _fromDate ?? DateTime.now(),
-                          firstDate: _fromDate ?? DateTime.now(),
+                          firstDate:
+                              _fromDate ?? DateTime(DateTime.now().day + 1),
                           lastDate: DateTime(DateTime.now().year + 1),
                         );
                         if (picked != null) {
@@ -704,11 +713,11 @@ class _BookingFormState extends State<BookingForm> {
     //       ),
     //     ),
     //   );
-    
-  // Format the dates for display
-  String checkInDate = DateFormat('EEE, MMM d, y').format(_fromDate!);
-  String checkOutDate = DateFormat('EEE, MMM d, y').format(_toDate!);
-  String bookingDate = DateFormat('EEE, MMM d, y').format(DateTime.now());
+
+    // Format the dates for display
+    String checkInDate = DateFormat('EEE, MMM d, y').format(_fromDate!);
+    String checkOutDate = DateFormat('EEE, MMM d, y').format(_toDate!);
+    String bookingDate = DateFormat('EEE, MMM d, y').format(DateTime.now());
 
     showDialog(
       context: context,
@@ -730,7 +739,15 @@ class _BookingFormState extends State<BookingForm> {
             ),
             actions: [
               TextButton(
-                onPressed: () => Navigator.of(context).pop(),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: const Text('Cancel'),
+              ),
+              TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
                 child: const Text('OK'),
               ),
             ],

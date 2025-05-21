@@ -42,6 +42,10 @@ class _MainhomescreenState extends State<Mainhomescreen> {
 
   @override
   Widget build(BuildContext context) {
+    var _tool_ = MediaQuery.of(context).size.height;
+    var _ord_ = MediaQuery.of(context).size.width;
+    var tool = MediaQuery.of(context).size.height /785;
+    var ord = MediaQuery.of(context).size.width/360;
     // ignore: deprecated_member_use
     return WillPopScope(
       onWillPop: () async {
@@ -64,7 +68,7 @@ class _MainhomescreenState extends State<Mainhomescreen> {
         child: Scaffold(
           body: Stack(
             children: [
-              _buildOffstageNavigator(0, const HomeScreen()),
+              _buildOffstageNavigator(0, HomeScreen()),
               _buildOffstageNavigator(
                 1,
                 const Center(child: Text("Search Screen")),
@@ -82,7 +86,10 @@ class _MainhomescreenState extends State<Mainhomescreen> {
           bottomNavigationBar: Container(
             color: const Color(0xff40354C),
             child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+              padding:  EdgeInsets.symmetric(
+                vertical: _tool_ * 0.0127388535031847,
+                horizontal: ord*10,
+              ),
               child: GNav(
                 gap: 8,
                 tabBackgroundColor: const Color(0xffE3DFF5),

@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:my_app/screens/mainHomeScreen.dart';
@@ -20,6 +19,7 @@ class _DrawerScreenState extends State<DrawerScreen> {
   int currentindex = 0;
   @override
   Widget build(BuildContext context) {
+    var _tool_ = MediaQuery.of(context).size.height;
     //this zoomDrawer widget if from zoomdrawer package
     return SafeArea(
       child: ZoomDrawer(
@@ -69,6 +69,8 @@ class Drawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var _tool_ = MediaQuery.of(context).size.height;
+    var _ord_ = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: const Color(0xff402662),
       body: SafeArea(
@@ -79,8 +81,8 @@ class Drawer extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                height: 70,
-                width: 70,
+                height: _tool_ * 0.089171974522293,
+                width: _ord_ * 0.1944444444444444,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(20),
@@ -90,8 +92,8 @@ class Drawer extends StatelessWidget {
                   ),
                 ),
               ),
-              const Padding(
-                padding: EdgeInsets.only(top: 20),
+               Padding(
+                padding: EdgeInsets.only(top: _tool_ * 0.0254777070063694),
                 child: Text(
                   "Welcome Dev73arner!",
                   style: TextStyle(
@@ -126,13 +128,20 @@ class Drawer extends StatelessWidget {
   }
 
   Widget drawerList(IconData icon, String text, int index, context) {
+    var _tool_ = MediaQuery.of(context).size.height;
+    var _ord_ = MediaQuery.of(context).size.width;
+    var tool = MediaQuery.of(context).size.height /785;
+    var ord = MediaQuery.of(context).size.width/360;
     return GestureDetector(
       onTap: () {
         setIndex(index);
         ZoomDrawer.of(context)!.close();
       },
       child: Container(
-        padding: const EdgeInsets.only(bottom: 20, top: 20),
+        padding:  EdgeInsets.only(
+          bottom: 20,
+          top: _tool_ * 0.0254777070063694,
+        ),
         child: Row(
           children: [
             Icon(

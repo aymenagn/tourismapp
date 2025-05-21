@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 
 class MainWidget extends StatelessWidget {
   const MainWidget({
@@ -11,35 +10,45 @@ class MainWidget extends StatelessWidget {
     required this.pad,
     required this.contHeigt,
     required this.sizedboxHeigt,
-    required this.icontop,
+    this.icontop,
+    this.onprs,
   });
 
   // final double x1;
   final double sizedboxHeigt;
   final bool pad;
   final double contHeigt;
-  final IconData icontop;
+  final IconData? icontop;
+  final VoidCallback? onprs;
 
   final String title;
   final Widget content;
 
   @override
   Widget build(BuildContext context) {
+    var _tool_ = MediaQuery.of(context).size.height;
+    var _ord_ = MediaQuery.of(context).size.width;
+    var tool = MediaQuery.of(context).size.height /785;
+    var ord = MediaQuery.of(context).size.width/360;
     return ListView(
       children: [
         Row(
           children: [
             Padding(
-              padding: const EdgeInsets.only(left: 10.0, top: 15),
+              padding:  EdgeInsets.only(
+                left: _ord_ *0.0277777777777778,
+                top: _tool_  * 0.0191082802547771,
+              ),
               child: IconButton(
-                onPressed: () {
-                  ZoomDrawer.of(context)!.toggle();
-                },
+                onPressed: onprs,
                 icon: Icon(icontop, color: Colors.white),
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 38.0, top: 15),
+              padding:  EdgeInsets.only(
+                left: _ord_  * 0.1055555555555556,
+                top: _tool_  * 0.0191082802547771,
+              ),
               child: Text(
                 title,
                 // textAlign: TextAlign.center,
@@ -57,14 +66,13 @@ class MainWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           mainAxisAlignment: MainAxisAlignment.end,
           children: <Widget>[
-            const SizedBox(height: 8),
             Container(
-              width: MediaQuery.sizeOf(context).width,
+              width: _ord_,
               height: contHeigt,
               padding: EdgeInsets.only(
                 top: pad ? 40 : 20,
-                left: 10,
-                right: 10,
+                left: _ord_ *0.0277777777777778,
+                right: _ord_  * 0.0277777777777778,
                 bottom: 0,
               ),
               decoration: BoxDecoration(

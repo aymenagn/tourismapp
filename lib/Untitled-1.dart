@@ -139,6 +139,10 @@ class _BookingScreenState extends State<BookingScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var _tool_ = MediaQuery.of(context).size.height;
+    var _ord_ = MediaQuery.of(context).size.width;
+    var tool = MediaQuery.of(context).size.height /785;
+    var ord = MediaQuery.of(context).size.width/360;
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -159,9 +163,9 @@ class _BookingScreenState extends State<BookingScreen> {
                 _showDateSelectionDialog(context); // Show custom dialog
               },
               child: Container(
-                padding: const EdgeInsets.symmetric(
-                  vertical: 12,
-                  horizontal: 16,
+                padding:  EdgeInsets.symmetric(
+                  vertical: _tool_ * 0.0152866242038217,
+                  horizontal: ord*16,
                 ),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
